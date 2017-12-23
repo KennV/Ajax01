@@ -157,4 +157,25 @@ If the burn is that I have to rebuild the App & Tests in Swift every time or ref
   return _fetchCon;
 }
 
+
+- (void)performAutomaticLightweightMigration {
+  
+  NSError *error;
+  
+  NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", self.databaseName, @".sqlite"]];
+  
+  NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                           [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                           [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+  
+  if (![_PSK addPersistentStoreWithType:NSSQLiteStoreType
+                          configuration:nil
+                                    URL:storeURL
+                                options:options
+                                  error:&error]){
+    // Handle the error.
+  }
+}
+
+
 @end

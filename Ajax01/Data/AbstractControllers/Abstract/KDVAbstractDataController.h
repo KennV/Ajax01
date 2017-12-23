@@ -75,5 +75,5 @@ _then set a default init_
  Gets ALL Entities of this type
  */
 @property (strong, nonatomic) NSFetchedResultsController *fetchCon;
-
+- (void)performAutomaticLightweightMigration;
 @end
