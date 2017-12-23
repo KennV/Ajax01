@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="KDVAbsGraphics" representedClassName="KDVAbsGraphics" syncable="YES" codeGenerationType="class">
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KDVAbstractEntity" inverseName="graphics" inverseEntity="KDVAbstractEntity" syncable="YES"/>
+    </entity>
+    <entity name="KDVAbsLocation" representedClassName="KDVAbsLocation" syncable="YES" codeGenerationType="class">
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KDVAbstractEntity" inverseName="locations" inverseEntity="KDVAbstractEntity" syncable="YES"/>
+    </entity>
+    <entity name="KDVAbsPhysics" representedClassName="KDVAbsPhysics" syncable="YES" codeGenerationType="class">
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KDVAbstractEntity" inverseName="physics" inverseEntity="KDVAbstractEntity" syncable="YES"/>
+    </entity>
+    <entity name="KDVAbstractEntity" representedClassName="KDVAbstractEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="graphics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KDVAbsGraphics" inverseName="owner" inverseEntity="KDVAbsGraphics" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KDVAbsLocation" inverseName="owner" inverseEntity="KDVAbsLocation" syncable="YES"/>
+        <relationship name="physics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KDVAbsPhysics" inverseName="owner" inverseEntity="KDVAbsPhysics" syncable="YES"/>
+    </entity>
+    <entity name="KDVRootEntity" representedClassName="KDVRootEntity" parentEntity="KDVAbstractEntity" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="KDVAbstractEntity" positionX="99" positionY="63" width="128" height="88"/>
+        <element name="KDVAbsGraphics" positionX="-153" positionY="63" width="128" height="58"/>
+        <element name="KDVAbsPhysics" positionX="-153" positionY="0" width="128" height="58"/>
+        <element name="KDVAbsLocation" positionX="-153" positionY="126" width="128" height="58"/>
+        <element name="KDVRootEntity" positionX="331" positionY="86" width="128" height="43"/>
+    </elements>
+</model>
