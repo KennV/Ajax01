@@ -21,6 +21,9 @@
 		381297E61FEDE45A002C17EC /* Ajax.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 381297E31FEDE45A002C17EC /* Ajax.xcdatamodeld */; };
 		381297E91FEDE658002C17EC /* KDVAbstractDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381297E81FEDE658002C17EC /* KDVAbstractDataController.m */; };
 		381297EA1FEDE658002C17EC /* KDVAbstractDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381297E81FEDE658002C17EC /* KDVAbstractDataController.m */; };
+		38887BB51FEEBDA900EB3A9D /* KDVApplicationDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38887BB41FEEBDA900EB3A9D /* KDVApplicationDataController.m */; };
+		38887BB71FEEC83300EB3A9D /* KDVAbstractDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38887BB61FEEC83300EB3A9D /* KDVAbstractDataTests.m */; };
+		38887BB91FEEC88000EB3A9D /* KDVApplicationDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38887BB81FEEC88000EB3A9D /* KDVApplicationDataTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,10 @@
 		381297E41FEDE45A002C17EC /* Ajax.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ajax.xcdatamodel; sourceTree = "<group>"; };
 		381297E71FEDE658002C17EC /* KDVAbstractDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDVAbstractDataController.h; sourceTree = "<group>"; };
 		381297E81FEDE658002C17EC /* KDVAbstractDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDVAbstractDataController.m; sourceTree = "<group>"; };
+		38887BB31FEEBDA900EB3A9D /* KDVApplicationDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDVApplicationDataController.h; sourceTree = "<group>"; };
+		38887BB41FEEBDA900EB3A9D /* KDVApplicationDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDVApplicationDataController.m; sourceTree = "<group>"; };
+		38887BB61FEEC83300EB3A9D /* KDVAbstractDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDVAbstractDataTests.m; sourceTree = "<group>"; };
+		38887BB81FEEC88000EB3A9D /* KDVApplicationDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDVApplicationDataTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +136,8 @@
 			children = (
 				381297AE1FEDE0FA002C17EC /* Ajax01Tests.m */,
 				381297B01FEDE0FA002C17EC /* Info.plist */,
+				38887BB61FEEC83300EB3A9D /* KDVAbstractDataTests.m */,
+				38887BB81FEEC88000EB3A9D /* KDVApplicationDataTests.m */,
 			);
 			path = Ajax01Tests;
 			sourceTree = "<group>";
@@ -228,6 +237,8 @@
 		381297D41FEDE3CB002C17EC /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				38887BB31FEEBDA900EB3A9D /* KDVApplicationDataController.h */,
+				38887BB41FEEBDA900EB3A9D /* KDVApplicationDataController.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -391,6 +402,7 @@
 			files = (
 				381297971FEDE0FA002C17EC /* KVPrimeTVController.m in Sources */,
 				381297941FEDE0FA002C17EC /* AppDelegate.m in Sources */,
+				38887BB51FEEBDA900EB3A9D /* KDVApplicationDataController.m in Sources */,
 				381297E51FEDE45A002C17EC /* Ajax.xcdatamodeld in Sources */,
 				381297E91FEDE658002C17EC /* KDVAbstractDataController.m in Sources */,
 				381297A51FEDE0FA002C17EC /* main.m in Sources */,
@@ -402,9 +414,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38887BB91FEEC88000EB3A9D /* KDVApplicationDataTests.m in Sources */,
 				381297EA1FEDE658002C17EC /* KDVAbstractDataController.m in Sources */,
 				381297AF1FEDE0FA002C17EC /* Ajax01Tests.m in Sources */,
 				381297E61FEDE45A002C17EC /* Ajax.xcdatamodeld in Sources */,
+				38887BB71FEEC83300EB3A9D /* KDVAbstractDataTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "KDVAbstractDataController.h"
-
 @interface Ajax01Tests : XCTestCase
 
 @end
@@ -37,13 +35,4 @@
     }];
 }
 
-- (void)testOne {
-  KDVAbstractDataController *j = [[KDVAbstractDataController alloc]init];
-  XCTAssertNotNil(j.applicationName);
-  XCTAssertNotNil(j.databaseName);
-  XCTAssertNotNil(j.entityClassName);
-  XCTAssert([[j MOM]isMemberOfClass:[NSManagedObjectModel class]]);
-  XCTAssert([[j MOC]isMemberOfClass:[NSManagedObjectContext class]]);
-  XCTAssert([[j PSK]isMemberOfClass:[NSPersistentStoreCoordinator class]]);
-}
 @end
