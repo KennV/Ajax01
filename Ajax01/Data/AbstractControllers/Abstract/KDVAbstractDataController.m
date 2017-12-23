@@ -1,10 +1,17 @@
-//
-//  KDVAbstractDataController.m
-//  Ajax01
-//
-//  Created by Kenn Villegas on 12/22/17.
-//  Copyright © 2017 Kenn Villegas. All rights reserved.
-//
+/**
+  KDVAbstractDataController.m
+  Ajax01
+
+  Created by Kenn Villegas on 12/22/17.
+  Copyright © 2017 Kenn Villegas. All rights reserved.
+
+*/
+/**
+After much agonizing, this is the base class
+There is a funny donkey-punch in this Ajax product because I got sick and tired of wonky xcode jive, So I build this app without CData built in and added it after all of teh base shit was up and running. I am even semi reluctant to put it on github at this point. because while it is stable I am still pushing for something.
+The long and short is Cocoa is STILL better. I mean I _will and do_ fail and the reasoning is quite cryptic at times but that is the nature of test
+If the burn is that I have to rebuild the App & Tests in Swift every time or refactor the App & Tests in Cocoa every time I fuck up then I will and did choose the latter
+*/
 
 #import "KDVAbstractDataController.h"
 
@@ -16,25 +23,28 @@
 @synthesize MOC = _MOC;
 @synthesize MOM = _MOM;
 @synthesize PSK = _PSK;
+@synthesize PCONT = _PCONT;
 @synthesize fetchCon = _fetchCon;
 
-- (instancetype)init
-{
+- (instancetype)initWithAppName:(NSString*)a databaseName:(NSString*)d className:(NSString*)c {
   self = [super init];
   if (self) {
-    _applicationName = (@"Ajax");
-    _databaseName = (@"Ajax.sqlite");
-    _entityClassName = (@"KDVAbstractEntity");
+    _applicationName = a;
+    _databaseName = d;
+    _entityClassName = c;
   }
   return self;
+}
+
+- (instancetype)init {
+  return ([self initWithAppName:(@"Ajax") databaseName:(@"Ajax.sqlite") className:(@"KDVAbstractEntity")]);
 }
 #pragma mark - Core Data stack
 - (NSURL *)applicationDocumentsDirectory {
   // The directory the application uses to store the Core Data store file. This code uses a directory named "edu._Company._Application" in the application's documents directory.
   return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
-// SET URL Name for abstraction
-// ApplicationName
+
 - (NSManagedObjectModel *)MOM {
   // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
   if (_MOM != nil) {
@@ -44,16 +54,12 @@
   _MOM = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
   return _MOM;
 }
-// SET URL Name for abstraction HERE TOO
-// DatabaseName
+
 - (NSPersistentStoreCoordinator *)PSK {
-  // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it.
   if (_PSK != nil) {
     return _PSK;
   }
-  
   // Create the coordinator and store
-  
   _PSK = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self MOM]];
   NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[self databaseName]];
   NSError *error = nil;
@@ -65,12 +71,10 @@
     dict[NSLocalizedFailureReasonErrorKey] = failureReason;
     dict[NSUnderlyingErrorKey] = error;
     error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-    // Replace this with code to handle the error appropriately.
-    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+
     NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     abort();
   }
-  
   return _PSK;
 }
 
@@ -89,6 +93,33 @@
   return _MOC;
 }
 
+- (NSPersistentContainer *)PCONT {
+  // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
+  @synchronized (self) {
+    if (_PCONT == nil) {
+      _PCONT = [[NSPersistentContainer alloc] initWithName:@"Ares"];
+      [_PCONT loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
+        if (error != nil) {
+          // Replace this implementation with code to handle the error appropriately.
+          // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+          
+          /*
+           Typical reasons for an error here include:
+           * The parent directory does not exist, cannot be created, or disallows writing.
+           * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+           * The device is out of space.
+           * The store could not be migrated to the current model version.
+           Check the error message to determine what the actual problem was.
+           */
+          NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+          abort();
+        }
+      }];
+    }
+  }
+  //      id j = _persistentContainer.persistentStoreCoordinator
+  return _PCONT;
+}
 
 #pragma mark - Fetched results controller
 
@@ -125,4 +156,5 @@
   }
   return _fetchCon;
 }
+
 @end
