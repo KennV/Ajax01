@@ -27,6 +27,8 @@
 
 - (void)testTwo {
   KDVApplicationDataController *k = [[KDVApplicationDataController alloc]initAllUp];
+  XCTAssertNotNil(k);
+  XCTAssert([k isMemberOfClass:[KDVApplicationDataController class]]);
   XCTAssertNotNil([k applicationName]);
   XCTAssertNotNil([k databaseName]);
   XCTAssertNotNil([k entityClassName]);

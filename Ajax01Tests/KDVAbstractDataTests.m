@@ -27,6 +27,8 @@
 
 - (void)testOne {
   KDVAbstractDataController *j = [[KDVAbstractDataController alloc]init];
+  XCTAssertNotNil(j);
+  XCTAssert([j isKindOfClass:[KDVAbstractDataController class]]);
   XCTAssertNotNil([j applicationName]);
   XCTAssertNotNil([j databaseName]);
   XCTAssertNotNil([j entityClassName]);
